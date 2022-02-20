@@ -1,0 +1,11 @@
+ def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        # for i in nums2:
+        #     if m >= n:
+        #         nums1[- m] = i
+        #         m=m-1
+        #     else:
+        #         nums1[-n] = i
+        #         n = n-1
+        # nums1.sort()
+        nums1[m:] = nums2[:n]
+        nums1.sort()
