@@ -1,0 +1,11 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        output = []
+        digit = int(''.join(map(str,digits))) + 1 # Add 1 to the converted integer from a list of decimal digits
+        # print(type(digit))
+        n_digit = str(digit) # Convert int to string so it becomes iterable
+
+        # print(n_digit)
+        for i in n_digit:
+            output.append (int(i)) # Append the digits from string back to being a list of numbers
+        return output
