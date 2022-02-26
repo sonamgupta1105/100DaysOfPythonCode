@@ -1,0 +1,14 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # Using two-pointer approach
+        buy_left = 0 
+        sell_right = 1 
+        max_profit = 0
+        while sell_right < len(prices):
+            curr_profit = prices[sell_right] - prices[buy_left] #our current Profit
+            if prices[buy_left] < prices[sell_right]:
+                max_profit =max(curr_profit,max_profit)
+            else:
+                buy_left = sell_right
+            sell_right += 1
+        return max_profit
