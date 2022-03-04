@@ -1,0 +1,24 @@
+class Solution:
+    def countOdds(self, low: int, high: int) -> int:
+        # count = 0
+        # for i in range(low, high+1):
+        #     if i % 2 != 0:
+        #         count = count + 1
+        #     else:
+        #         pass
+        # return count
+        
+        # if low % 2 == 1:
+        #     return len(list(range(low, high+1, 2)))
+        # else:
+        #     return len(list(range(low+1, high+1, 2)))
+        
+        ######## TIME LIMIT EXCEEDED FOR THE SOLUTIONS ABOVE
+        
+        diff_low_high = high - low
+        
+        if high%2 != 0 or low%2 != 0:
+            return (diff_low_high //2) + 1
+        
+        else:
+            return diff_low_high//2
