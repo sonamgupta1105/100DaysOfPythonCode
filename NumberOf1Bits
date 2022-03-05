@@ -1,0 +1,7 @@
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        count = 0
+        while n:
+            n = n&(n-1) # &: Sets each bit to 1 if both bits are 1
+            count+=1
+        return count
