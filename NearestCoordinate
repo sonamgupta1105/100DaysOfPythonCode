@@ -1,0 +1,7 @@
+class Solution:
+    def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:
+        distances = {} # Create empty dictionary to store valid points and their indices
+        for i, pt in enumerate(points):
+            if pt[0] == x or pt[1] == y:
+                distances[i] = abs(pt[0] - x) + abs(pt[1] - y)
+        return min(distances, key = distances.get, default = -1)
