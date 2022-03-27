@@ -1,0 +1,6 @@
+# Time complexity: O(m+nlogn)
+\def sortedSquaredArray(array):
+	output_arr = []
+	for i in range(len(array)):
+		output_arr.append(array[i] ** 2)
+	return sorted(output_arr)
