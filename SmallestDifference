@@ -1,0 +1,26 @@
+# Time Complexity: O(nlogn + mlogm), space: O(1)
+def smallestDifference(arrayOne, arrayTwo):
+    # Storing variables
+	currDiff = float("inf")
+	smallestDiff = float("inf")
+	indexOne = 0
+	indexTwo = 0
+	arrayOne.sort()
+	arrayTwo.sort()
+	smallestPair = []
+	
+	while indexOne < len(arrayOne) and indexTwo < len(arrayTwo):
+		firstNum = arrayOne[indexOne]
+		secondNum = arrayTwo[indexTwo]
+		if firstNum < secondNum:
+			currDiff = secondNum - firstNum
+			indexOne += 1
+		elif secondNum < firstNum:
+			currDiff = firstNum - secondNum
+			indexTwo += 1
+		else:
+			return [firstNum, secondNum]
+		if smallestDiff > currDiff:
+			smallestDiff = currDiff
+			smallestPair = [firstNum, secondNum]
+	return smallestPair
