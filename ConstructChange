@@ -1,0 +1,10 @@
+Time complexity: O(nlogn)
+def nonConstructibleChange(coins):
+	coins.sort()
+	currChangeCreated = 0
+	for c in coins:
+		if c > currChangeCreated+1:
+			return currChangeCreated+1
+		currChangeCreated += c
+	return currChangeCreated + 1
+		
