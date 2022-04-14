@@ -1,0 +1,14 @@
+# Time complexity: O(m*(n+m))
+def generateDocument(characters, document):
+	for ch in document:
+		docFreq = getFreq(ch, document)
+		chFreq = getFreq(ch, characters)
+		if docFreq > chFreq:
+			return False
+	return True
+def getFreq(character, document):
+	freq = 0
+	for c in document:
+		if c == character:
+			freq += 1
+	return freq
