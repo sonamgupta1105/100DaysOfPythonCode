@@ -1,0 +1,10 @@
+# Time complexity: O(nlogn); space: O(1)
+def minimumWaitingTime(queries):
+	queries.sort()
+	totalWaitTime = 0
+	for idx, time in enumerate(queries):
+		queriesToGo = len(queries) - (idx+1)
+		totalWaitTime += time * queriesToGo
+	return totalWaitTime
+		
+		
