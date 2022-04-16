@@ -1,0 +1,23 @@
+#Time complexity: O(nlogn)
+def classPhotos(redShirtHeights, blueShirtHeights):
+	redShirtHeights.sort(reverse = True)
+	blueShirtHeights.sort(reverse = True)
+	shirtColorInFirstRow = ""
+	if redShirtHeights[0] < blueShirtHeights[0]:
+		shirtColorInFirstRow = "RED"
+	else:
+		"BLUE"
+	
+	for i in range(len(redShirtHeights)):
+		redShirtHt = redShirtHeights[i]
+		blueShirtHt = blueShirtHeights[i]
+		
+		if shirtColorInFirstRow == "RED":
+			if redShirtHt >= blueShirtHt:
+				return False
+		else:
+			if blueShirtHt >= redShirtHt:
+				return False
+	return True
+				
+	
