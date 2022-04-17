@@ -1,0 +1,23 @@
+Time complexity: O(n^2)
+def firstNonRepeatingCharacter(string):
+	for idx in range(len(string)):
+		dup = False
+		for j in range(len(string)):
+			if string[idx] == string[j] and idx != j:
+				dup = True
+		if not dup:
+			return idx
+	return -1
+  
+  Time Complexity: O(n)
+  def firstNonRepeatingCharacter(string):
+	charCount = {}
+	# Get the count of each cahracter and store it in dictionary
+	for s in string:
+		charCount[s] = charCount.get(s, 0) + 1
+	for idx in range(len(string)):
+		ch = string[idx]
+		if charCount[ch] == 1:
+			return idx
+	return -1
+		
