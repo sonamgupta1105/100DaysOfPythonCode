@@ -1,0 +1,28 @@
+import math
+from sys import flags
+import pandas as pd
+
+# Count words per sentence
+sent1 = "The brown fox ran away in the jungle."
+sent2 = "The brown colored animal was found in the jungle."
+sent1Dict = {}
+sent2Dict = {}
+for word in sent1:
+    sent1Dict[word] += 1
+for word in sent2:
+    sent2Dict[word] += 1
+
+def tfCompute(sentDict, doc):
+    tfDict = {}
+    docCount = len(doc)
+    for word, count in tfDict.items():
+        tfDict[word] = count/float(docCount)
+    return tfDict
+
+def idfCompute(docList):
+    idfDict = {}
+    N = len(docList)
+    idfDict = dict.fromkeys(docList[0].key(), 0)
+    for word, val in idfDict.items():
+        idfDict[word] = math.log10(N/float(val) + 1)
+    return idfDict
