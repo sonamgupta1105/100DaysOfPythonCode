@@ -1,0 +1,19 @@
+#Time complexity: O(n^3)
+def longestPalindromicSubstring(string):
+	longestString = ""
+	for i in range(len(string)):
+		for j in range(i, len(string)):
+			substring = string[i:j+1]
+			if len(substring) > len(longestString) and isPalindrome(substring):
+				longestString = substring
+	return longestString
+	
+def isPalindrome(string):
+	left_ptr = 0
+	right_ptr = len(string)-1
+	while left_ptr < right_ptr:
+		if string[left_ptr] != string[right_ptr]:
+			return False
+		left_ptr += 1
+		right_ptr -= 1
+	return True
