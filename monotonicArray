@@ -1,0 +1,9 @@
+def isMonotonic(array):
+	isUpwards = True
+	isDownwards = True
+	for i in range(1, len(array)):
+		if array[i] < array[i-1]:
+			isUpwards = False
+		if array[i] > array[i-1]:
+			isDownwards = False
+	return isUpwards or isDownwards
