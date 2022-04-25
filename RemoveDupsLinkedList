@@ -1,0 +1,17 @@
+# Time complexity: O(n)
+# This is an input class. Do not edit.
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def removeDuplicatesFromLinkedList(linkedList):
+	currNode = linkedList
+	while currNode is not None:
+		nextNode = currNode.next
+		while nextNode is not None and nextNode.value == currNode.value:
+			nextNode = nextNode.next
+		currNode.next = nextNode
+		currNode = nextNode
+	return linkedList
