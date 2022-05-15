@@ -1,0 +1,19 @@
+# Time complexity O(n), space O(n)
+def firstDuplicateValue(array):
+	no_dups_set = set()
+	for num in array:
+		if num in no_dups_set:
+			return num
+		no_dups_set.add(num)
+	return -1
+ 
+ # Time complexity O(n^2) space O(1)
+ def firstDuplicateValue(array):
+    min_idx = len(array)
+	for i in range(len(array)):
+		for j in range(i+1, len(array)):
+			if array[i] == array[j]:
+				min_idx = min(min_idx, j)
+	if min_idx == len(array):
+		return -1
+	return array[min_idx]
