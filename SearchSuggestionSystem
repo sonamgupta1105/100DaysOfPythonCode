@@ -1,0 +1,14 @@
+# Time Complexity: O(nlogn)+O(m*n)
+class Solution:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        products.sort()
+        output = []
+        for i, chr in enumerate(searchWord):
+            tmp_list = []
+            for p in products:
+                if i < len(p) and chr == p[i]:
+                    tmp_list.append(p)
+            output.append(tmp_list[:3])
+            products = tmp_list
+        return output
+        
