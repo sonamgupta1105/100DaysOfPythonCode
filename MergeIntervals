@@ -1,0 +1,18 @@
+# TC: O(nlogn), SC: O(n)
+def mergeOverlappingIntervals(intervals):
+    merged = [] # output list
+    # Sort the array in ascending order of start values
+    sortedIntervals = sorted(intervals, key = lambda x: x[0])
+    # Assuming there always will be one interval in the input intervals list
+    currInterval = sortedIntervals[0]
+    merged.append(currInterval)
+    for nextInt in sortedIntervals:
+        _, currIntEnd = currInterval
+        nextStart, nextEnd = nextInt
+        if currIntEnd >= nextStart:
+            currInterval[1] = max(currIntEnd, nextEnd)
+        else:
+            currInterval = nextInt
+            merged.append(currInterval)
+    return merged
+    
