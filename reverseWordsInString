@@ -1,0 +1,25 @@
+# TC/SC : O(n)/O(n)
+
+def reverseWordsInString(string):
+    words = [] # output list
+    start = 0 # starting index
+    for i in range(len(string)):
+        chr = string[i] 
+        if chr == " ":
+            words.append(string[start:i])
+            start = i
+        elif string[start] == " ":
+            words.append(" ")
+            start = i
+    words.append(string[start:])
+    reversedList(words)
+    return "".join(words)
+
+def reversedList(list):
+    start, end = 0, len(list)-1
+    while start < end:
+        list[start], list[end] = list[end], list[start]
+        start += 1
+        end -= 1
+    
+    
