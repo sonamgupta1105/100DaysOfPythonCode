@@ -1,0 +1,16 @@
+# TC: O(n! * n^2), SC: O(n*n!)
+def getPermutations(array):
+    perms = []
+    helper(array, [], perms)
+    return perms
+
+def helper(array, currPerm, perms):
+    if not len(array) and len(currPerm):
+        perms.append(currPerm)
+    else:
+        # Start removing numbers one by one, append in a new array
+        # and switch around the rest of the numbers to create combinations
+        for i in range(len(array)):
+            newArr = array[:i] + array[i+1:]
+            newPerm = currPerm + [array[i]]
+            helper(newArr, newPerm, perms)
