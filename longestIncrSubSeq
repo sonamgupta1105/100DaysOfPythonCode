@@ -1,0 +1,23 @@
+# TC/SC: O(n^2) / O(n)
+
+def longestIncreasingSubsequence(array):
+    sequences = [None for x in array]
+    lengths = [1 for x in array]
+    maxLengthIdx = 0
+    for i in range(len(array)):
+        currNum = array[i]
+        for j in range(0, i):
+            otherNum = array[j]
+            if otherNum < currNum and lengths[j] + 1 >= lengths[i]:
+                lengths[i] = lengths[j] + 1
+                sequences[i] = j
+            if lengths[i] >= lengths[maxLengthIdx]:
+                maxLengthIdx = i
+    return buildSeq(array, sequences, maxLengthIdx)
+def buildSeq(array, sequences, currIdx):
+    seq = []
+    while currIdx is not None:
+        seq.append(array[currIdx])
+        currIdx = sequences[currIdx]
+    return list(reversed(seq))
+ 
