@@ -1,0 +1,17 @@
+# TC/SC: O(n) / O(1)
+
+def hasSingleCycle(array):
+    numElementsVisited = 0
+    currIdx = 0 # assuming that we start at 0th index
+    while numElementsVisited < len(array):
+        if numElementsVisited > 0 and currIdx == 0:
+            return False
+        numElementsVisited += 1
+        currIdx = getNextIdx(currIdx, array)
+    return currIdx == 0
+def getNextIdx(currIdx, array):
+    jump = array[currIdx]
+    nextIdx = (currIdx + jump) % len(array)
+    return nextIdx
+        
+    
