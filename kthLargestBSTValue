@@ -1,0 +1,28 @@
+# TC/SC: O(h+k) / O9h)
+# This is an input class. Do not edit.
+class BST:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+class treeNodeVisitValue:
+    def __init__(self, numNodesVisit, nodeVal):
+        self.numNodesVisit = numNodesVisit
+        self.nodeVal = nodeVal
+        
+def findKthLargestValueInBst(tree, k):
+    treeInfo = treeNodeVisitValue(0, -1)
+    reverseInOrder(tree, k, treeInfo)
+    return treeInfo.nodeVal
+
+def reverseInOrder(node, k, treeInfo):
+    # base case
+    if node == None or treeInfo.numNodesVisit >= k:
+        return
+    reverseInOrder(node.right, k, treeInfo)
+    if treeInfo.numNodesVisit < k:
+        treeInfo.numNodesVisit += 1
+        treeInfo.nodeVal = node.value
+        reverseInOrder(node.left, k, treeInfo)
+    
