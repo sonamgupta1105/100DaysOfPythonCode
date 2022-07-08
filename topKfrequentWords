@@ -1,0 +1,31 @@
+# TC: O(nlogk), SC: O(n)
+# Optimal solution
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        count_of_words = {}
+        output_list = []
+        for word in words:
+            count_of_words[word] = count_of_words.get(word, 0)+1
+        heap =[]
+        for key, v in count_of_words.items():
+            heapq.heappush(heap, (-v, key))
+        for i in range(k):
+            output_list.append(heapq.heappop(heap)[1])
+        return output_list
+
+# Brute Force Approach:
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        count_of_words = {}
+        output_list = []
+
+        for word in words:
+            count_of_words[word] = words.count(word)
+        
+        for w, v in count_of_words.items():
+
+            if v>=1 and v<= len(set(words)):
+                #-x[1] correlates to the frequency counts, x[0] sorts on lexigraphical
+                output_list = sorted(count_of_words.items(), key=lambda x: (-x[1], x[0]))
+        
+        return [x[0] for x in output_list[:k]]
