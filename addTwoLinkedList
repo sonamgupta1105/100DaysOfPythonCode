@@ -1,0 +1,33 @@
+# TC: O(max(m,n)) SC: O(max(m,n)) # Whichever list is larger
+
+# This is an input class. Do not edit.
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def sumOfLinkedLists(linkedListOne, linkedListTwo):
+    # create head for new ll
+    newLLhead = LinkedList(0)
+    currNode = newLLhead
+    carry = 0
+    node1 = linkedListOne
+    node2 = linkedListTwo
+    
+    while node1 is not None or node2 is not None or carry != 0:
+        val1 = node1.value if node1 is not None else 0
+        val2 = node2.value if node2 is not None else 0
+        sumofvalues = val1+val2+carry
+        newValue = sumofvalues % 10
+        newNode = LinkedList(newValue)
+        currNode.next = newNode
+        currNode = newNode
+
+        carry = sumofvalues // 10
+        node1 = node1.next if node1 is not None else None
+        node2 = node2.next if node2 is not None else None
+        
+    return newLLhead.next
+    
+        
