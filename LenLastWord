@@ -1,0 +1,15 @@
+# TC: O(n)
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        s = s.split()
+        for word in reversed(s):
+
+            if word.isascii():
+                return len(word)
+                break
+
+Solution #2:
+s = s.strip(' ')
+s = s.split()
+n = len(s)
+print(len(s[n-1]))
