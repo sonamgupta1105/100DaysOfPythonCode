@@ -1,0 +1,21 @@
+# TC/SC: O(n2)/O(1)
+
+def pal_in_substring(input, left, right):
+  count = 0
+  while left >= 0 and right < len(input):
+    if input[left] != input[right]:
+      break
+    count += 1
+    left -= 1
+    right += 1
+  return count
+
+def find_all_palindrome_substrings(input):
+  count = 0
+  for i in range(0, len(input)):
+    count += pal_in_substring(input, i-1, i+1)
+    count += pal_in_substring(input, i, i+1)
+  return count
+
+s = "aabbbaa"
+print(find_all_palindrome_substrings(s))
