@@ -1,0 +1,10 @@
+#TC/SC: O(n)/ O(maxDepthofNestedLists)
+
+def productSum(array, depthOfArr = 1):
+    psum = 0
+    for i in array:
+        if type(i) == list:
+            psum += productSum(i, depthOfArr + 1)
+        else:
+            psum += i
+    return psum * depthOfArr
