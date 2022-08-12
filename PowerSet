@@ -1,0 +1,8 @@
+# TC/SC: O(n*2^n)
+def powerset(array):
+    result = [[]]
+    for i in array:
+        for ele in range(len(result)):
+            currSet = result[ele]
+            result.append(currSet + [i])
+    return result
