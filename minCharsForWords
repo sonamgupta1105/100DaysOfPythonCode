@@ -1,0 +1,17 @@
+TC/SC: O(m*n)/O(c) where m is number of words, n is length longest word, c is number of unique characters across all the words
+
+def minimumCharactersForWords(words):
+    char_count_dict = {}
+    output = []
+    for word in words:
+        temp_dict = {}
+        for w in word:
+            if w not in char_count_dict:
+                char_count_dict[w] = 1
+                output.append(w)
+            temp_dict[w] = temp_dict.get(w, 0) + 1
+            if temp_dict[w] > char_count_dict[w]:
+                output.append(w)
+                char_count_dict[w] += 1
+    return output
+        
