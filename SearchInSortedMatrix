@@ -1,0 +1,13 @@
+#TC/SC: O(m+n)/O(1)
+
+def searchInSortedMatrix(matrix, target):
+    row = 0 #starting point
+    col = len(matrix[0]) - 1 #2nd pointer to trace it from the right half of the matrix
+    while row < len(matrix) and col >= 0:
+        if matrix[row][col] > target:
+            col -= 1 # moving left column wise
+        elif matrix[row][col] < target:
+            row += 1 # moving down row wise
+        else:
+            return [row, col]
+    return [-1,-1]
