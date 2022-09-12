@@ -1,0 +1,11 @@
+#TC: O(n)
+def centered_average(nums):
+  
+  min_num = nums[0]
+  max_num = nums[0]
+  sum = 0
+  for n in nums:
+    max_num = max(max_num, n)
+    min_num = min(min_num, n)
+    sum += n
+  return (sum - max_num - min_num)/(len(nums)-2)
