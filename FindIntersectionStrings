@@ -1,0 +1,9 @@
+def FindIntersection(strArr):
+  output_str = []
+  s1 = set(strArr[0].split(','))
+  s2 = set(strArr[1].split(','))
+  output_str = list(s1&s2)
+  return ",".join(sorted(output_str, key= int))
+
+# keep this function call here 
+print(FindIntersection(input()))
