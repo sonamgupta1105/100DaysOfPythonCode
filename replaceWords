@@ -1,0 +1,11 @@
+class Solution:
+    def replaceWords(self, dictionary: List[str], sentence: str) -> str:
+        sent_words = list(sentence.split(' '))
+
+        for word in dictionary:
+            for s in range(len(sent_words)):
+                if sent_words[s][:len(word)] == word:
+                    sent_words[s] = word
+        sentence = ' '.join(sent_words)
+        return sentence
+        
