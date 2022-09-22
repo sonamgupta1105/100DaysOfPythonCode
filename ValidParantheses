@@ -1,0 +1,17 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        parans_dict = {"}":"{" ,")":"(","]":"["}
+        opening_parans = set(['{', '(', '['])
+        for i in s:
+            if i in opening_parans:
+                stack.append(i)
+            elif stack and stack[-1] == parans_dict[i]:
+                stack.pop()
+                
+            else:
+                return False
+        if stack:
+            return False
+        else:
+            return True
