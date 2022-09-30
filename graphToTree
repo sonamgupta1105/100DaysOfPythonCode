@@ -1,0 +1,22 @@
+# TC:O(n^2)/SC:O(n)
+import collections
+class Solution:
+    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+        g = collections.defaultdict(set)
+        def dfs(source, target):
+            
+            if source not in visited:
+                visited.add(source)
+                if source == target:
+                    return True
+                return any(dfs(i, target) for i in g[source])
+        
+        for u,v in edges:
+            visited = set()
+            if u in g and v in g and dfs(u,v):
+                return u,v
+            g[u].add(v)
+            g[v].add(u)
+    
+
+        
