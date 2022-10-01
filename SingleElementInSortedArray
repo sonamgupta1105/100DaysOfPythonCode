@@ -1,0 +1,17 @@
+#TC: O(log n)
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        # count_dict = {}
+        # for n in nums:
+        #     count_dict[n] = nums.count(n)
+        # for v,k in count_dict.items():
+        #     if k == 1:
+        #         return v
+        left_ptr, right_ptr = 0, len(nums)-2
+        while left_ptr <= right_ptr:
+            mid = (left_ptr+right_ptr)//2
+            if nums[mid] == nums[mid^1]:
+                left_ptr = mid+1
+            else:
+                right_ptr = mid-1
+        return nums[left_ptr]
