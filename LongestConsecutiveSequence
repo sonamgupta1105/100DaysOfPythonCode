@@ -1,0 +1,14 @@
+#TC: O(n)
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        nums_set = set(nums)
+        count_seq = 0
+        for n in nums_set:
+            if n-1 not in nums_set:
+                curr_n = n
+                curr_seq = 1
+                while curr_n+1 in nums_set:
+                    curr_n += 1
+                    curr_seq+= 1
+                count_seq = max(count_seq, curr_seq)
+        return count_seq
