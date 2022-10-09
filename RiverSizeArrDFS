@@ -1,0 +1,25 @@
+#TC: O(n*m) Traversing all the cells
+# SC: O(n*m) Set for holding all row and col pairs
+
+def dfs(row, col, visit, matrix):
+    if row not in range(len(matrix)) or col not in range(len(matrix[0])) or matrix[row][col] == 0 or (row,col) in visit:
+        return 0
+    visit.add((row, col))
+    size = 0
+    dir = [(0,1), (1,0), (0,-1), (-1,0)]
+    for dr, dc in dir:
+        size += dfs(row+dr, col+dc, visit, matrix)
+    return 1 + size
+
+
+def riverSizes(matrix):
+    rows, cols = len(matrix), len(matrix[0])
+    visit = set()
+    river_size_arr = []
+
+    for row in range(rows):
+        for col in range(cols):
+            if (row, col) not in visit and matrix[row][col] == 1:
+                river_size = dfs(row, col, visit, matrix)
+                river_size_arr.append(river_size)
+    return river_size_arr
