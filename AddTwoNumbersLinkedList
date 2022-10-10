@@ -1,0 +1,46 @@
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+#         l1 = [str(integer) for integer in l1]
+#         l1_string = "".join(reversed(l1))
+#         l2 = [str(integer) for integer in l2]
+#         l2_string = "".join(reversed(l2))
+#         res_l1 = int(l1_string)
+#         res_l2 = int(l2_string)
+
+#         output = res_l1 + res_l2
+#         output = str(output)[::-1]
+#         output_list = [int(x) for x in str(output)]
+#         return output_list
+        num1 = ""
+        num2 = ""
+        while l1 is not None:
+            num1 += str(l1.val)
+            l1 = l1.next
+        while l2 is not None:
+            num2 += str(l2.val)
+            l2 = l2.next
+
+        #reverse the integers
+        num1 = num1[::-1]
+        num2 = num2[::-1]
+
+        # Add the numbers
+        sum_nums = str(int(num1)+int(num2))
+
+        sum_nums = sum_nums[::-1]
+
+        head_list = ListNode(0)
+        res = head_list
+
+        for i in range(len(sum_nums)):
+            head_list.val = sum_nums[i]
+            if i != len(sum_nums)-1:
+                head_list.next = ListNode(0)
+            head_list = head_list.next
+        return res
