@@ -1,0 +1,18 @@
+class Solution:
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        self.result = []
+        
+        def backtrack(node, path):
+            path.append(node)#append the first node into the path
+            if node == len(graph)-1:
+                self.result.append(list(path))
+
+            #Check the neighbor of the current visited node
+            for neighbor in graph[node]:
+                backtrack(neighbor, path)
+            path.pop()
+        backtrack(0,[])
+        return self.result
+
+
+        
