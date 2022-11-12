@@ -1,0 +1,24 @@
+#TC: O(n), SC: O(n)
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+class Solution:
+    head = None # linkedlist head 
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        def reverse_preorder(node:TreeNode) -> None:
+            #right left parent
+            if node.right:
+                reverse_preorder(node.right)
+            if node.left:
+                reverse_preorder(node.left)
+            node.left, node.right, self.head = None, self.head, node
+        if root:
+            reverse_preorder(root)
+
+            
