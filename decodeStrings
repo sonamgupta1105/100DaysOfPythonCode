@@ -1,0 +1,14 @@
+class Solution:
+    def decodeMessage(self, key: str, message: str) -> str:
+        char_map = {' ' : ' '}
+
+        i = 0
+        result = ''
+        alpha = 'abcdefghijklmnopqrstuvwxyz'
+        for ch in key:
+            if ch not in char_map:
+                char_map[ch] = alpha[i]
+                i += 1
+        for ch in message:
+            result += char_map[ch]
+        return result
